@@ -34,7 +34,7 @@ const tableData = computed(() => {
   if (props.selectedChannel !== "all") {
     rows = rows.filter(row => row.channel === props.selectedChannel);
   }
-  
+
   if (searchQuery.value) {
     rows = rows.filter(item =>
       item.channel.toLowerCase().includes(searchQuery.value.toLowerCase())
@@ -68,13 +68,15 @@ const setSort = (key) => {
 </script>
 
 <template>
+    <div class="mb-2 ms-3 mt-5 subTitle">
+        Sentiment Tabel
+    </div>
   <div class="container-fluid">
     <input
       v-model="searchQuery"
       class="form-control mb-3 w-50"
       placeholder="Search channel..."
     />
-
     <div class="table-responsive rounded shadow-sm">
       <table class="table table-striped table-bordered table-hover mb-0">
         <thead class="table-dark">

@@ -20,6 +20,11 @@
   font-size: 50px
 }
 
+.subTitle{
+  font-family: 'Poppins', sans-serif;
+  font-weight: semi-bold;
+  font-size: 20px
+}
 
 a {
   font-weight: 500;
