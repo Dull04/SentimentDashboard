@@ -1,11 +1,21 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import jsonData from "../assets/response.json";
 
-const channels = ["news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
+const sortKey = ref("");
+const sortOrder = ref("asc");
+
+const channels = [
+  "news",
+  "instagram",
+  "youtube",
+  "facebook",
+  "tiktok",
+  "twitter",
+];
 
 const tableData = computed(() => {
-  return channels.map(channel => {
+  let rows = channels.map((channel) => {
     const channelData = jsonData.data[channel];
     const pos = channelData.pie.series[0];
     const net = channelData.pie.series[1];
@@ -23,9 +33,29 @@ const tableData = computed(() => {
       percentNegative: ((neg / total) * 100).toFixed(1),
     };
   });
-});
-</script>
+  if (sortKey.value) {
+    rows.sort((a, b) => {
+      let valA = a[sortKey.value];
+      let valB = b[sortKey.value];
+      valA = isNaN(valA) ? valA : Number(valA);
+      valB = isNaN(valB) ? valB : Number(valB);
 
+      if (valA < valB) return sortOrder.value === "asc" ? -1 : 1;
+      if (valA > valB) return sortOrder.value === "asc" ? 1 : -1;
+      return 0;
+    });
+  }
+  return rows;
+});
+const setSort = (key) => {
+  if (sortKey.value === key) {
+    sortOrder.value = sortOrder.value === "asc" ? "desc" : "asc";
+  } else {
+    sortKey.value = key;
+    sortOrder.value = "asc";
+  }
+};
+</script>
 <template>
   <div class="container-fluid">
     <div class="table-responsive rounded shadow-sm">
@@ -33,13 +63,104 @@ const tableData = computed(() => {
         <thead class="table-dark">
           <tr>
             <th>Channel</th>
-            <th>Positive</th>
-            <th>Neutral</th>
-            <th>Negative</th>
-            <th>Total</th>
-            <th>% Positive</th>
-            <th>% Neutral</th>
-            <th>% Negative</th>
+            <th>
+              Positive
+              <i
+                :class="[
+                  sortKey === 'positive'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('positive')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              Neutral
+              <i
+                :class="[
+                  sortKey === 'neutral'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('neutral')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              Negative
+              <i
+                :class="[
+                  sortKey === 'negative'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('negative')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              Total
+              <i
+                :class="[
+                  sortKey === 'total'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('total')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              % Positive
+              <i
+                :class="[
+                  sortKey === 'percentPositive'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('percentPositive')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              % Neutral
+              <i
+                :class="[
+                  sortKey === 'percentNeutral'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('percentNeutral')"
+                style="cursor: pointer"
+              ></i>
+            </th>
+            <th>
+              % Negative
+              <i
+                :class="[
+                  sortKey === 'percentNegative'
+                    ? sortOrder === 'asc'
+                      ? 'bi bi-arrow-up'
+                      : 'bi bi-arrow-down'
+                    : 'bi bi-arrow-down-up',
+                ]"
+                @click="setSort('percentNegative')"
+                style="cursor: pointer"
+              ></i>
+            </th>
           </tr>
         </thead>
         <tbody>
