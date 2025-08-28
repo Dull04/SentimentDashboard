@@ -3,14 +3,13 @@ import { computed } from "vue";
 import jsonData from "../assets/response.json";
 
 const props = defineProps({
-  selectedChannel: { type: String, default: "" }, // default kosong
+  selectedChannel: { type: String, default: "" }, 
 });
 
 const channels = ["news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
 
 const summary = computed(() => {
   if (!props.selectedChannel || props.selectedChannel === "all") {
-    // placeholder jika belum memilih channel
     return {
       positive: "-",
       neutral: "-",
@@ -36,7 +35,6 @@ const summary = computed(() => {
     <div class="me-3" :title="summary.info">Negative: {{ summary.negative }}</div>
   </div>
 
-  <!-- Optional: tampilkan info message di bawah -->
   <div v-if="summary.info" class="text-muted small ms-3 mb-3">
     {{ summary.info }}
   </div>
