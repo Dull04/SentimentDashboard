@@ -1,21 +1,14 @@
 <script setup>
 import { ref, computed } from "vue";
 import jsonData from "../assets/response.json";
-
+const searchQuery = ref("");
 const sortKey = ref("");
 const sortOrder = ref("asc");
 
-const channels = [
-  "news",
-  "instagram",
-  "youtube",
-  "facebook",
-  "tiktok",
-  "twitter",
-];
+const channels = ["news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
 
 const tableData = computed(() => {
-  let rows = channels.map((channel) => {
+  let rows = channels.map(channel => {
     const channelData = jsonData.data[channel];
     const pos = channelData.pie.series[0];
     const net = channelData.pie.series[1];
@@ -33,6 +26,13 @@ const tableData = computed(() => {
       percentNegative: ((neg / total) * 100).toFixed(1),
     };
   });
+
+  if (searchQuery.value) {
+    rows = rows.filter(item =>
+      item.channel.toLowerCase().includes(searchQuery.value.toLowerCase())
+    );
+  }
+
   if (sortKey.value) {
     rows.sort((a, b) => {
       let valA = a[sortKey.value];
@@ -45,8 +45,10 @@ const tableData = computed(() => {
       return 0;
     });
   }
+
   return rows;
 });
+
 const setSort = (key) => {
   if (sortKey.value === key) {
     sortOrder.value = sortOrder.value === "asc" ? "desc" : "asc";
@@ -56,8 +58,15 @@ const setSort = (key) => {
   }
 };
 </script>
+
 <template>
   <div class="container-fluid">
+    <input
+      v-model="searchQuery"
+      class="form-control mb-3 w-50"
+      placeholder="Search channel..."
+    />
+
     <div class="table-responsive rounded shadow-sm">
       <table class="table table-striped table-bordered table-hover mb-0">
         <thead class="table-dark">
@@ -66,99 +75,50 @@ const setSort = (key) => {
             <th>
               Positive
               <i
-                :class="[
-                  sortKey === 'positive'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('positive')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'positive' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('positive')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               Neutral
               <i
-                :class="[
-                  sortKey === 'neutral'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('neutral')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'neutral' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('neutral')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               Negative
               <i
-                :class="[
-                  sortKey === 'negative'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('negative')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'negative' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('negative')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               Total
               <i
-                :class="[
-                  sortKey === 'total'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('total')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'total' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('total')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               % Positive
               <i
-                :class="[
-                  sortKey === 'percentPositive'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('percentPositive')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'percentPositive' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('percentPositive')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               % Neutral
               <i
-                :class="[
-                  sortKey === 'percentNeutral'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('percentNeutral')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'percentNeutral' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('percentNeutral')" style="cursor: pointer;"
               ></i>
             </th>
             <th>
               % Negative
               <i
-                :class="[
-                  sortKey === 'percentNegative'
-                    ? sortOrder === 'asc'
-                      ? 'bi bi-arrow-up'
-                      : 'bi bi-arrow-down'
-                    : 'bi bi-arrow-down-up',
-                ]"
-                @click="setSort('percentNegative')"
-                style="cursor: pointer"
+                :class="[ sortKey === 'percentNegative' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
+                @click="setSort('percentNegative')" style="cursor: pointer;"
               ></i>
             </th>
           </tr>
