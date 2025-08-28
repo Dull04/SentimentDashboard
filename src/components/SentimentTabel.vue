@@ -7,6 +7,10 @@ const sortOrder = ref("asc");
 
 const channels = ["news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
 
+const props = defineProps({
+  selectedChannel: { type: String, default: "all" },
+});
+
 const tableData = computed(() => {
   let rows = channels.map(channel => {
     const channelData = jsonData.data[channel];
@@ -27,6 +31,10 @@ const tableData = computed(() => {
     };
   });
 
+  if (props.selectedChannel !== "all") {
+    rows = rows.filter(row => row.channel === props.selectedChannel);
+  }
+  
   if (searchQuery.value) {
     rows = rows.filter(item =>
       item.channel.toLowerCase().includes(searchQuery.value.toLowerCase())
