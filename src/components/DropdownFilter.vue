@@ -3,13 +3,18 @@ import { ref, defineEmits } from "vue";
 
 const emits = defineEmits(["update:selectedChannel"]);
 
-// Tambahin "all" lagi di awal
+// daftar channel
 const channels = ["all", "news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
-const selected = ref(""); 
+
+// 🔥 default langsung "Semua Channel"
+const selected = ref("all"); 
 
 const handleChange = () => {
   emits("update:selectedChannel", selected.value);
 };
+
+// emit value pertama kali load (biar App.vue langsung sync)
+handleChange();
 </script>
 
 <template>
@@ -22,9 +27,6 @@ const handleChange = () => {
         v-model="selected"
         @change="handleChange"
       >
-        <option disabled value="">
-          -- Pilih Channel --
-        </option>
         <option
           v-for="channel in channels"
           :key="channel"

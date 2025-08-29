@@ -5,7 +5,10 @@ import DropdownFilter from "./components/DropdownFilter.vue";
 import ChannelSummary from "./components/ChannelSummary.vue";
 import SentimentTabel from "./components/SentimentTabel.vue";
 import PieChart from "./components/DoughnutChart.vue";
+import BarChart from "./components/BarColumnChart.vue"; 
+
 const selectedChannel = ref("all");
+
 const isValidResponse = response.meta?.status === 1 && response.meta?.code === 200;
 const errorMessage = response.meta?.message || "Unknown error";
 const showPopup = ref(false);
@@ -54,15 +57,18 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="col-12 col-md-6 d-flex flex-column gap-3">
-        <div class="card shadow-sm p-3 flex-grow-0">
-          <PieChart :selectedChannel="selectedChannel" />
-        </div>
+      <div class="col-12 col-md-6 d-flex flex-column">
+  <div class="card shadow-sm p-3 d-flex align-items-center justify-content-center mt-3" style="flex:1">
+    <PieChart :selectedChannel="selectedChannel" />
+  </div>
 
-        <div class="card shadow-sm p-3 flex-grow-1 d-flex align-items-center justify-content-center">
-          aaaa
-        </div>
-      </div>
+  <div class="card shadow-sm p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex:1">
+    <BarChart 
+      :selectedChannel="selectedChannel" 
+      :responseData="response.data" 
+    />
+  </div>
+</div>
     </div>
   </div>
 </template>
