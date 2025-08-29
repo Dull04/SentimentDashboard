@@ -1,6 +1,5 @@
 <template>
   <div class="w-100 position-relative" style="min-height: 100%;">
-    <!-- 🔥 Note kecil kanan atas -->
     <div
       v-if="props.selectedChannel === 'all'"
       class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
@@ -13,8 +12,6 @@
     </div>
   </div>
 </template>
-
-
 
 <script setup>
 import { onMounted, watch } from "vue";
@@ -35,26 +32,22 @@ const props = defineProps({
 });
 
 let chartInstance = null;
-
 const renderChart = () => {
   const ctx = document.getElementById("barChart");
-
   let chartData = {};
   let chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: { position: "top" },
-      datalabels: {}, // kita atur nanti
+      datalabels: {},
       tooltip: {
         enabled: true,
         callbacks: {
-          // custom isi tooltip
           label: (context) => {
             const dataset = context.chart.data.datasets;
-            const dataIndex = context.dataIndex; // index kategori X (misalnya youtube)
+            const dataIndex = context.dataIndex; 
             if (props.selectedChannel === "all") {
-              // tampilkan semua value (Positive, Neutral, Negative)
               let lines = dataset.map(
                 (d) => `${d.label}: ${d.data[dataIndex].toLocaleString()}`
               );
@@ -65,7 +58,6 @@ const renderChart = () => {
               lines.push(`Total: ${total.toLocaleString()}`);
               return lines;
             } else {
-              // single channel → default aja
               return `${context.dataset.label}: ${context.formattedValue}`;
             }
           },
@@ -87,8 +79,6 @@ const renderChart = () => {
       })),
     };
     chartOptions.scales = { x: { stacked: true }, y: { stacked: true } };
-
-    // ❌ jangan pakai datalabels (biar nggak numpuk angka)
     chartOptions.plugins.datalabels.display = false;
   } else {
     const bar = props.responseData[props.selectedChannel].bar;
@@ -104,13 +94,11 @@ const renderChart = () => {
         },
       ],
     };
-
-    // ✅ untuk single channel: tampilkan angka di dalam bar
     chartOptions.plugins.legend.display = false;
     chartOptions.plugins.datalabels = {
       anchor: "center",
       align: "center",
-      color: "#fff",
+      color: "#000",
       font: { weight: "bold", size: 12 },
       formatter: (value) => value.toLocaleString(),
     };

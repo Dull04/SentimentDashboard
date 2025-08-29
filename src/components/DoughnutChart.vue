@@ -16,7 +16,6 @@ const props = defineProps({
 
 const colors = ["#3EC764", "#B3B6C6", "#ED3E3E"];
 
-// 🔥 Sekarang handle "all" juga
 const chartData = computed(() => {
   if (!props.selectedChannel) return null;
 
@@ -71,7 +70,6 @@ const chartOptions = computed(() => ({
   }
 }));
 
-// Placeholder data
 const placeholderData = {
   labels: ["Belum ada data"],
   datasets: [
@@ -96,13 +94,10 @@ const placeholderOptions = {
 
 <template>
   <div style="width:100%; display:flex; flex-direction:column; align-items:center;">
-    <!-- 🔥 Ukuran fixed seperti sebelumnya -->
     <div style="height:100%x; width:100%;">
       <Doughnut v-if="chartData" :data="chartData.chart" :options="chartOptions" />
       <Doughnut v-else :data="placeholderData" :options="placeholderOptions" />
     </div>
-
-    <!-- Legend -->
     <div v-if="chartData" class="d-flex justify-content-center mt-3 gap-4 flex-wrap">
       <div v-for="(label, i) in chartData.categories" :key="i" class="d-flex align-items-center">
         <span
@@ -113,7 +108,6 @@ const placeholderOptions = {
         </span>
       </div>
     </div>
-
     <div v-else class="text-muted text-center mt-2">
       Silakan pilih satu channel untuk menampilkan chart
     </div>
