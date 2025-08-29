@@ -13,7 +13,7 @@ handleChange();
 </script>
 
 <template>
-  <div class="row w-100 g-3 px-3">
+  <div class="row w-100 ms-1">
     <div class="col-12 col-md-6">
       <div class="card shadow-sm p-3">
         <select
@@ -32,7 +32,7 @@ handleChange();
         </select>
       </div>
     </div>
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 px-1">
       <div class="card shadow-sm p-3 mt1setengah d-flex align-items-center justify-content-center welcome-card">
         <span class="fw-bold fs-5 text-white">Welcome, User 👋</span>
       </div>
