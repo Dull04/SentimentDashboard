@@ -43,6 +43,9 @@
   color: #cf1322;
 }
 
+.mt1setengah{
+  margin-top: 5px;
+}
 
 .slide-fade-enter-active {
   transition: all 0.5s ease;
