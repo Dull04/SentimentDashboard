@@ -43,6 +43,31 @@
   color: #cf1322;
 }
 
+/* Hilangkan border bawah di row terakhir */
+.table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Tambahin rounded di pojok bawah */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 40vh;      /* tinggi responsif, 40% dari viewport height */
+  max-height: 300px; /* batasi supaya tidak terlalu tinggi */
+  min-height: 200px; /* jaga biar chart gak kekecilan */
+}
+
 .mt1setengah{
   margin-top: 5px;
 }

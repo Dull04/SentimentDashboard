@@ -71,10 +71,9 @@ watch(
   { immediate: true }
 );
 </script>
-
 <template>
-  <div class="row ms-1 mb-3">
-    <div class="col-12 col-md-4">
+  <div class="row ms-1 mb-3 mt-2">
+    <div class="col-12 col-md-4 ">
       <div class="card shadow-sm p-3 text-center h-100">
         <div class="fw-bold fs-4 text-success">
           {{ positive.toLocaleString() }}
