@@ -5,14 +5,21 @@ import jsonData from "../assets/response.json";
 const searchQuery = ref("");
 const sortKey = ref("");
 const sortOrder = ref("asc");
-const channels = ["news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
+const channels = [
+  "news",
+  "instagram",
+  "youtube",
+  "facebook",
+  "tiktok",
+  "twitter",
+];
 
 const props = defineProps({
   selectedChannel: { type: String, default: "all" },
 });
 
 const tableData = computed(() => {
-  let rows = channels.map(channel => {
+  let rows = channels.map((channel) => {
     const channelData = jsonData.data[channel];
     const pos = channelData.pie.series[0];
     const net = channelData.pie.series[1];
@@ -32,11 +39,11 @@ const tableData = computed(() => {
   });
 
   if (props.selectedChannel !== "all") {
-    rows = rows.filter(row => row.channel === props.selectedChannel);
+    rows = rows.filter((row) => row.channel === props.selectedChannel);
   }
 
   if (searchQuery.value) {
-    rows = rows.filter(item =>
+    rows = rows.filter((item) =>
       item.channel.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
   }
@@ -70,9 +77,7 @@ const setSort = (key) => {
 <template>
   <div class="card p-0 ms-3">
     <div class="card-body p-3">
-      <div class="mb-2 ms-3 subTitle">
-        Sentiment Tabel
-      </div>
+      <div class="mb-2 ms-3 subTitle">Sentiment Tabel</div>
       <div class="container-fluid">
         <input
           v-model="searchQuery"
@@ -80,61 +85,97 @@ const setSort = (key) => {
           placeholder="Search channel..."
         />
 
-            <div class="table-responsive">
-              <table class="table align-middle mb-0 modern-table">
-                <thead>
-                  <tr>
-                    <th>Channel</th>
-                    <th>
-                      Positive
-                      <i
-                        :class="[ sortKey === 'positive' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
-                        @click="setSort('positive')" style="cursor: pointer;"
-                      ></i>
-                    </th>
-                    <th>
-                      Neutral
-                      <i
-                        :class="[ sortKey === 'neutral' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
-                        @click="setSort('neutral')" style="cursor: pointer;"
-                      ></i>
-                    </th>
-                    <th>
-                      Negative
-                      <i
-                        :class="[ sortKey === 'negative' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
-                        @click="setSort('negative')" style="cursor: pointer;"
-                      ></i>
-                    </th>
-                    <th>
-                      Total
-                      <i
-                        :class="[ sortKey === 'total' ? (sortOrder === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down-up']"
-                        @click="setSort('total')" style="cursor: pointer;"
-                      ></i>
-                    </th>
-                    <th>% Positive</th>
-                    <th>% Neutral</th>
-                    <th>% Negative</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="row in tableData" :key="row.channel">
-                    <td class="fw-semibold">{{ row.channel }}</td>
-                    <td class="text-success fw-semibold">{{ row.positive.toLocaleString() }}</td>
-                    <td>{{ row.neutral.toLocaleString() }}</td>
-                    <td class="text-danger fw-semibold">{{ row.negative.toLocaleString() }}</td>
-                    <td class="fw-semibold">{{ row.total.toLocaleString() }}</td>
-                    <td>{{ Number(row.percentPositive).toLocaleString('id-ID') }}%</td>
-                    <td>{{ Number(row.percentNeutral).toLocaleString('id-ID') }}%</td>
-                    <td>{{ Number(row.percentNegative).toLocaleString('id-ID') }}%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0 modern-table">
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>
+                  Positive
+                  <i
+                    :class="[
+                      sortKey === 'positive'
+                        ? sortOrder === 'asc'
+                          ? 'bi bi-arrow-up'
+                          : 'bi bi-arrow-down'
+                        : 'bi bi-arrow-down-up',
+                    ]"
+                    @click="setSort('positive')"
+                    style="cursor: pointer"
+                  ></i>
+                </th>
+                <th>
+                  Neutral
+                  <i
+                    :class="[
+                      sortKey === 'neutral'
+                        ? sortOrder === 'asc'
+                          ? 'bi bi-arrow-up'
+                          : 'bi bi-arrow-down'
+                        : 'bi bi-arrow-down-up',
+                    ]"
+                    @click="setSort('neutral')"
+                    style="cursor: pointer"
+                  ></i>
+                </th>
+                <th>
+                  Negative
+                  <i
+                    :class="[
+                      sortKey === 'negative'
+                        ? sortOrder === 'asc'
+                          ? 'bi bi-arrow-up'
+                          : 'bi bi-arrow-down'
+                        : 'bi bi-arrow-down-up',
+                    ]"
+                    @click="setSort('negative')"
+                    style="cursor: pointer"
+                  ></i>
+                </th>
+                <th>
+                  Total
+                  <i
+                    :class="[
+                      sortKey === 'total'
+                        ? sortOrder === 'asc'
+                          ? 'bi bi-arrow-up'
+                          : 'bi bi-arrow-down'
+                        : 'bi bi-arrow-down-up',
+                    ]"
+                    @click="setSort('total')"
+                    style="cursor: pointer"
+                  ></i>
+                </th>
+                <th>% Positive</th>
+                <th>% Neutral</th>
+                <th>% Negative</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in tableData" :key="row.channel">
+                <td class="fw-semibold">{{ row.channel }}</td>
+                <td class="text-success fw-semibold">
+                  {{ row.positive.toLocaleString() }}
+                </td>
+                <td>{{ row.neutral.toLocaleString() }}</td>
+                <td class="text-danger fw-semibold">
+                  {{ row.negative.toLocaleString() }}
+                </td>
+                <td class="fw-semibold">{{ row.total.toLocaleString() }}</td>
+                <td>
+                  {{ Number(row.percentPositive).toLocaleString("id-ID") }}%
+                </td>
+                <td>
+                  {{ Number(row.percentNeutral).toLocaleString("id-ID") }}%
+                </td>
+                <td>
+                  {{ Number(row.percentNegative).toLocaleString("id-ID") }}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
+    </div>
+  </div>
 </template>
-

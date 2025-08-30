@@ -1,19 +1,4 @@
-<template>
-  <div class="card p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex: 1">
-    <div class="w-100 position-relative" style="min-height: 100%;">
-      <div
-        v-if="selectedChannel === 'all'"
-        class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
-      >
-        Hover untuk lihat detail nya
-      </div>
 
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <canvas id="barChart"></canvas>
-      </div>
-    </div>
-  </div>
-</template>
 
 <script setup>
 import { onMounted, watch } from "vue";
@@ -48,7 +33,7 @@ const renderChart = () => {
         callbacks: {
           label: (context) => {
             const dataset = context.chart.data.datasets;
-            const dataIndex = context.dataIndex; 
+            const dataIndex = context.dataIndex;
             if (props.selectedChannel === "all") {
               let lines = dataset.map(
                 (d) => `${d.label}: ${d.data[dataIndex].toLocaleString()}`
@@ -125,3 +110,22 @@ const renderChart = () => {
 onMounted(renderChart);
 watch(() => props.selectedChannel, renderChart);
 </script>
+
+<template>
+  <div
+    class="card p-3 mt-3 mb-3 d-flex align-items-center justify-content-center barflex1"
+  >
+    <div class="w-100 position-relative barheight1">
+      <div
+        v-if="selectedChannel === 'all'"
+        class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
+      >
+        Hover untuk lihat detail nya
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+</template>

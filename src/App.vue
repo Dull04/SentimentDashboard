@@ -32,7 +32,6 @@ onMounted(() => {
 });
 </script>
 
-
 <template>
   <div class="container-fluid min-vh-100 d-flex flex-column">
     <transition name="slide-fade">
@@ -51,15 +50,15 @@ onMounted(() => {
           <SentimentTabel :selectedChannel="selectedChannel" />
         </div>
         <div class="flex-grow-1 d-flex flex-column">
-                <DailyTrendChart style="flex: 1" />
+          <DailyTrendChart style="flex: 1" />
         </div>
       </div>
       <div class="col-12 col-md-6 d-flex flex-column">
-          <PieChart :selectedChannel="selectedChannel" /> 
-          <BarChart
-            :selectedChannel="selectedChannel"
-            :responseData="response.data"
-          />
+        <PieChart :selectedChannel="selectedChannel" />
+        <BarChart
+          :selectedChannel="selectedChannel"
+          :responseData="response.data"
+        />
       </div>
     </div>
   </div>

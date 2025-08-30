@@ -31,7 +31,9 @@ watch(
   () => props.selectedChannel,
   (newChannel) => {
     if (newChannel === "all") {
-      let totalPos = 0, totalNeu = 0, totalNeg = 0;
+      let totalPos = 0,
+        totalNeu = 0,
+        totalNeg = 0;
 
       Object.keys(jsonData.data).forEach((channel) => {
         if (channel !== "all" && jsonData.data[channel]?.pie) {
@@ -73,7 +75,7 @@ watch(
 </script>
 <template>
   <div class="row ms-1 mb-3 mt-2">
-    <div class="col-12 col-md-4 ">
+    <div class="col-12 col-md-4">
       <div class="card p-3 text-center h-100">
         <div class="fw-bold fs-4 text-success">
           {{ positive.toLocaleString() }}

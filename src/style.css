@@ -15,24 +15,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 .card,
 .card-body {
   border: none !important;
-  border-radius: 20px;          /* opsional: bikin sudut lebih halus */
+  border-radius: 20px; /* opsional: bikin sudut lebih halus */
   background-color: #ffffff !important;
   color: #213547 !important;
 }
 
 .select,
 input {
-  border-radius: 20px;          /* opsional: bikin sudut lebih halus */
+  border-radius: 20px; /* opsional: bikin sudut lebih halus */
   background-color: #ffffff !important;
   color: #213547 !important;
 }
-
-
 
 .popup-box {
   position: fixed;
@@ -127,7 +123,11 @@ a:hover {
 }
 
 .welcome-card {
-  background: linear-gradient(135deg, #a74f45, #479161); /* light blue → deep blue */
+  background: linear-gradient(
+    135deg,
+    #a74f45,
+    #479161
+  ); /* light blue → deep blue */
   border: none;
   color: white;
 }
@@ -190,4 +190,20 @@ button:focus-visible {
   }
 }
 
+.barflex1{
+  flex: 1
+}
+
+.barheight1{
+  min-height: 100%
+}
+
+.barflex {
+  flex: 1;
+  width: 100%;
+}
+
+.barheight {
+  height: 250px; /* tinggi fix supaya chart gak nembus card */
+}
 
