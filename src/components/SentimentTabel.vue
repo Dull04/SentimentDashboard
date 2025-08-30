@@ -99,9 +99,10 @@ const setSort = (key) => {
                           ? 'bi bi-arrow-up'
                           : 'bi bi-arrow-down'
                         : 'bi bi-arrow-down-up',
+                        'sort-icon'
                     ]"
                     @click="setSort('positive')"
-                    style="cursor: pointer"
+
                   ></i>
                 </th>
                 <th>
@@ -113,9 +114,9 @@ const setSort = (key) => {
                           ? 'bi bi-arrow-up'
                           : 'bi bi-arrow-down'
                         : 'bi bi-arrow-down-up',
+                        'sort-icon'
                     ]"
                     @click="setSort('neutral')"
-                    style="cursor: pointer"
                   ></i>
                 </th>
                 <th>
@@ -127,9 +128,9 @@ const setSort = (key) => {
                           ? 'bi bi-arrow-up'
                           : 'bi bi-arrow-down'
                         : 'bi bi-arrow-down-up',
+                        'sort-icon'
                     ]"
                     @click="setSort('negative')"
-                    style="cursor: pointer"
                   ></i>
                 </th>
                 <th>
@@ -141,9 +142,10 @@ const setSort = (key) => {
                           ? 'bi bi-arrow-up'
                           : 'bi bi-arrow-down'
                         : 'bi bi-arrow-down-up',
+                        'sort-icon'
                     ]"
                     @click="setSort('total')"
-                    style="cursor: pointer"
+
                   ></i>
                 </th>
                 <th>% Positive</th>

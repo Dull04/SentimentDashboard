@@ -207,3 +207,45 @@ button:focus-visible {
   height: 250px; /* tinggi fix supaya chart gak nembus card */
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.chart-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-container {
+  height: 100%;
+  width: 100%;
+}
+
+.chart-legend {
+  gap: 1rem; /* sama seperti gap-4 bootstrap */
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+
+.dailychart{
+  width:100%;
+}
+
+.sort-icon {
+  cursor: pointer;
+  margin-left: 6px; 
+}

@@ -98,18 +98,10 @@ const placeholderOptions = {
 
 <template>
   <div
-    class="card p-3 d-flex align-items-center justify-content-center mt-3"
-    style="flex: 1"
+    class="card p-3 d-flex align-items-center justify-content-center mt-3 flex-1"
   >
-    <div
-      style="
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      "
-    >
-      <div style="height: 100%; width: 100%">
+    <div class="chart-wrapper">
+      <div class="chart-container">
         <Doughnut
           v-if="chartData"
           :data="chartData.chart"
@@ -121,24 +113,19 @@ const placeholderOptions = {
           :options="placeholderOptions"
         />
       </div>
+
       <div
         v-if="chartData"
-        class="d-flex justify-content-center mt-3 gap-4 flex-wrap"
+        class="chart-legend d-flex justify-content-center mt-3 gap-4 flex-wrap"
       >
         <div
           v-for="(label, i) in chartData.categories"
           :key="i"
-          class="d-flex align-items-center"
+          class="legend-item d-flex align-items-center"
         >
           <span
-            :style="{
-              backgroundColor: colors[i],
-              width: '15px',
-              height: '15px',
-              display: 'inline-block',
-              marginRight: '6px',
-              borderRadius: '3px',
-            }"
+            class="legend-color"
+            :style="{ backgroundColor: colors[i] }"
           ></span>
           <span>
             {{ label }}: {{ chartData.values[i] }} ({{
@@ -147,6 +134,7 @@ const placeholderOptions = {
           </span>
         </div>
       </div>
+
       <div v-else class="text-muted text-center mt-2">
         Silakan pilih satu channel untuk menampilkan chart
       </div>

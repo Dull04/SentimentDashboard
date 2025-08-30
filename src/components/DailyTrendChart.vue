@@ -80,8 +80,7 @@ onMounted(renderChart);
   <div class="card shadow-lg p-0 h-100 mb-3 ms-3">
     <div class="card-body p-3 d-flex flex-column">
       <h5 class="card-title m-0">Tren Harian</h5>
-
-      <div class="flex-grow-1 d-flex align-items-center" style="width: 100%">
+      <div class="flex-grow-1 d-flex align-items-center dailychart">
         <div class="w-100 position-relative barheight">
           <canvas id="dailyTrendChart"></canvas>
         </div>
@@ -89,3 +88,6 @@ onMounted(renderChart);
     </div>
   </div>
 </template>
+
+
+
