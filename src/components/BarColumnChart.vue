@@ -78,6 +78,7 @@ const renderChart = () => {
         backgroundColor: col.color[i],
         categoryPercentage: 1,
         barPercentage: 0.9,
+        borderRadius: 20,
       })),
     };
     chartOptions.scales = { x: { stacked: true }, y: { stacked: true } };
@@ -93,6 +94,7 @@ const renderChart = () => {
           backgroundColor: bar.series[0].data.map((d) => d.color),
           categoryPercentage: 0.8,
           barPercentage: 0.9,
+          borderRadius: 20,
         },
       ],
     };
