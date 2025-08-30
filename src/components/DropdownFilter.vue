@@ -1,28 +1,27 @@
 <script setup>
 import { ref, defineEmits } from "vue";
 const emits = defineEmits(["update:selectedChannel"]);
-
 const channels = ["all", "news", "instagram", "youtube", "facebook", "tiktok", "twitter"];
 const selected = ref("all");
-
 const handleChange = () => {
   emits("update:selectedChannel", selected.value);
 };
 
 handleChange();
 </script>
-
 <template>
   <div class="row w-100 ms-1">
     <div class="col-12 col-md-6">
       <div class="card shadow-sm p-3">
         <select
+          
           id="channelSelect"
-          class="form-select"
+          class="form-select keep-border"
           v-model="selected"
           @change="handleChange"
         >
           <option
+            
             v-for="channel in channels"
             :key="channel"
             :value="channel"
@@ -39,11 +38,3 @@ handleChange();
     </div>
   </div>
 </template>
-
-<style scoped>
-.welcome-card {
-  background: linear-gradient(135deg, #6fb1fc, #4364f7); /* light blue → deep blue */
-  border: none;
-  color: white;
-}
-</style>

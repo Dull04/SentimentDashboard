@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* 🚀 Default warna teks dan background */
+  color: #213547;
+  background-color: #f5f6fa; /* abu muda background global */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,13 +15,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
+.card,
+.card-body {
+  border: none !important;
+  border-radius: 20px;          /* opsional: bikin sudut lebih halus */
+  background-color: #ffffff !important;
+  color: #213547 !important;
+}
+
+.select,
+input {
+  border-radius: 20px;          /* opsional: bikin sudut lebih halus */
+  background-color: #ffffff !important;
+  color: #213547 !important;
+}
+
+
+
 .popup-box {
   position: fixed;
   top: 1rem;
   right: 1rem;
   padding: 0.75rem 1.25rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-size: 0.95rem;
   font-weight: 500;
   z-index: 9999;
@@ -32,13 +51,13 @@
 }
 
 .popup-box.success {
-  background: #e6f4ff; /* light blue */
+  background: #e6f4ff;
   border: 1px solid #91caff;
   color: #0958d9;
 }
 
 .popup-box.error {
-  background: #fff1f0; /* soft red */
+  background: #fff1f0;
   border: 1px solid #ffa39e;
   color: #cf1322;
 }
@@ -63,12 +82,12 @@
 .chart-container {
   position: relative;
   width: 100%;
-  height: 40vh;      /* tinggi responsif, 40% dari viewport height */
-  max-height: 300px; /* batasi supaya tidak terlalu tinggi */
-  min-height: 200px; /* jaga biar chart gak kekecilan */
+  height: 40vh;
+  max-height: 300px;
+  min-height: 200px;
 }
 
-.mt1setengah{
+.mt1setengah {
   margin-top: 5px;
 }
 
@@ -86,16 +105,16 @@
   opacity: 0;
 }
 
-.font{
-  font-family: 'Poppins', sans-serif;
+.font {
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
-  font-size: 50px
+  font-size: 50px;
 }
 
-.subTitle{
-  font-family: 'Poppins', sans-serif;
-  font-weight: semi-bold;
-  font-size: 20px
+.subTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 a {
@@ -107,8 +126,16 @@ a:hover {
   color: #535bf2;
 }
 
+.welcome-card {
+  background: linear-gradient(135deg, #a74f45, #479161); /* light blue → deep blue */
+  border: none;
+  color: white;
+}
+
 body {
   margin: 0;
+  font-family: "Poppins", sans-serif !important;
+  background-color: #ededed !important; /* 🚀 abu muda */
 }
 
 title {
@@ -141,6 +168,7 @@ button:focus-visible {
 
 .card {
   padding: 2em;
+  background-color: #ffffff; /* 🚀 putih selalu */
 }
 
 #app {
@@ -148,10 +176,11 @@ button:focus-visible {
   text-align: left;
 }
 
+/* 🚀 Buat jaga-jaga kalau ada prefers-color-scheme */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f5f6fa; /* abu muda juga */
   }
   a:hover {
     color: #747bff;
@@ -160,4 +189,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
 

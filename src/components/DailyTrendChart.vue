@@ -4,13 +4,10 @@ import { Bar } from "vue-chartjs";
 import { computed } from "vue";
 import jsonData from "../assets/response.json";
 
-// Register Chart.js komponen
 ChartJS.register(Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-// Ambil data histogram dari response.json
 const histogram = jsonData.data.all.histogram;
 
-// Data untuk chart
 const chartData = computed(() => ({
   labels: histogram.categories, // tanggal
   datasets: histogram.series.map((s) => ({
@@ -26,7 +23,6 @@ const chartData = computed(() => ({
   })),
 }));
 
-// Opsi chart
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -50,26 +46,25 @@ const chartOptions = {
         },
       },
     },
-    datalabels: {
-      display: false, // 🔹 matiin angka di dalam bar
-    },
+    datalabels: { display: false },
   },
   scales: {
-    x: {
-      stacked: true,
-      ticks: { font: { size: 10 } },
-    },
-    y: {
-      stacked: true,
-      beginAtZero: true,
-      ticks: { font: { size: 10 } },
-    },
+    x: { stacked: true, ticks: { font: { size: 10 } } },
+    y: { stacked: true, beginAtZero: true, ticks: { font: { size: 10 } } },
   },
 };
 </script>
 
 <template>
-  <div style="height: 250px;">
-    <Bar :data="chartData" :options="chartOptions" />
+  <div class="card shadow-lg p-0 h-100 mb-3 ms-3">
+    <div class="card-body p-3 d-flex flex-column">
+      <h5 class="card-title m-0">Tren Harian</h5>
+
+      <div class="flex-grow-1 d-flex align-items-center" style="width: 100%">
+        <div style="height: 250px; flex: 1">
+          <Bar :data="chartData" :options="chartOptions" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>

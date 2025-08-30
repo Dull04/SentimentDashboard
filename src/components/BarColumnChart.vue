@@ -1,14 +1,16 @@
 <template>
-  <div class="w-100 position-relative" style="min-height: 100%;">
-    <div
-      v-if="props.selectedChannel === 'all'"
-      class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
-    >
-      Hover untuk lihat detail nya
-    </div>
+  <div class="card shadow-lg p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex: 1">
+    <div class="w-100 position-relative" style="min-height: 100%;">
+      <div
+        v-if="selectedChannel === 'all'"
+        class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
+      >
+        Hover untuk lihat detail nya
+      </div>
 
-    <div class="d-flex align-items-center justify-content-center h-100">
-      <canvas id="barChart"></canvas>
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <canvas id="barChart"></canvas>
+      </div>
     </div>
   </div>
 </template>

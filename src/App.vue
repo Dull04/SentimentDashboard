@@ -6,9 +6,11 @@ import ChannelSummary from "./components/ChannelSummary.vue";
 import SentimentTabel from "./components/SentimentTabel.vue";
 import DailyTrendChart from "./components/DailyTrendChart.vue";
 import PieChart from "./components/DoughnutChart.vue";
-import BarChart from "./components/BarColumnChart.vue"; 
+import BarChart from "./components/BarColumnChart.vue";
 const selectedChannel = ref("all");
-const isValidResponse = response.meta?.status === 1 && response.meta?.code === 200;
+
+const isValidResponse =
+  response.meta?.status === 1 && response.meta?.code === 200;
 const errorMessage = response.meta?.message || "Unknown error";
 const showPopup = ref(false);
 const popupMessage = ref("");
@@ -29,14 +31,12 @@ onMounted(() => {
   }, 2000);
 });
 </script>
+
+
 <template>
   <div class="container-fluid min-vh-100 d-flex flex-column">
     <transition name="slide-fade">
-      <div
-        v-if="showPopup"
-        class="popup-box"
-        :class="popupType"
-      >
+      <div v-if="showPopup" class="popup-box" :class="popupType">
         {{ popupMessage }}
       </div>
     </transition>
@@ -46,37 +46,20 @@ onMounted(() => {
         <div class="d-flex align-items-center mb-2">
           <DropdownFilter v-model:selectedChannel="selectedChannel" />
         </div>
-
         <ChannelSummary :selectedChannel="selectedChannel" />
-
         <div class="mb-3">
           <SentimentTabel :selectedChannel="selectedChannel" />
         </div>
-<!-- Daily Trend Chart -->
-      <div class="flex-grow-1 d-flex flex-column">
-        <div class="card shadow-sm p-0 h-100 mb-3 ms-3">
-          <div class="card-body p-3 d-flex flex-column">
-            <h5 class="card-title m-0 mb-3">Tren Harian</h5>
-            <!-- Wrapper biar chart tetap full width tapi center vertical -->
-            <div class="flex-grow-1 d-flex align-items-center" style="width: 100%">
-              <DailyTrendChart style="flex:1;" />
-            </div>
-          </div>
+        <div class="flex-grow-1 d-flex flex-column">
+                <DailyTrendChart style="flex: 1" />
         </div>
       </div>
-      </div>
-
       <div class="col-12 col-md-6 d-flex flex-column">
-        <div class="card shadow-sm p-3 d-flex align-items-center justify-content-center mt-3" style="flex:1">
-          <PieChart :selectedChannel="selectedChannel" />
-        </div>
-
-        <div class="card shadow-sm p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex:1">
-          <BarChart 
-            :selectedChannel="selectedChannel" 
-            :responseData="response.data" 
+          <PieChart :selectedChannel="selectedChannel" /> 
+          <BarChart
+            :selectedChannel="selectedChannel"
+            :responseData="response.data"
           />
-        </div>
       </div>
     </div>
   </div>

@@ -68,7 +68,7 @@ const setSort = (key) => {
 </script>
 
 <template>
-  <div class="card shadow-sm p-0 ms-3">
+  <div class="card p-0 shadow-sm ms-3">
     <div class="card-body p-3">
       <div class="mb-2 ms-3 subTitle">
         Sentiment Tabel
@@ -76,11 +76,10 @@ const setSort = (key) => {
       <div class="container-fluid">
         <input
           v-model="searchQuery"
-          class="form-control mb-3 w-50"
+          class="form-control mb-3 w-50 keep-border"
           placeholder="Search channel..."
         />
-        <div class="card shadow-sm p-0">
-          <div class="card-body p-3">
+
             <div class="table-responsive">
               <table class="table align-middle mb-0 modern-table">
                 <thead>
@@ -136,7 +135,6 @@ const setSort = (key) => {
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 </template>
 
