@@ -1,5 +1,5 @@
 <template>
-  <div class="card shadow-lg p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex: 1">
+  <div class="card p-3 mt-3 mb-3 d-flex align-items-center justify-content-center" style="flex: 1">
     <div class="w-100 position-relative" style="min-height: 100%;">
       <div
         v-if="selectedChannel === 'all'"

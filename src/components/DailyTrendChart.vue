@@ -56,7 +56,7 @@ const chartOptions = {
 </script>
 
 <template>
-  <div class="card shadow-lg p-0 h-100 mb-3 ms-3">
+  <div class="card p-0 h-100 mb-3 ms-3">
     <div class="card-body p-3 d-flex flex-column">
       <h5 class="card-title m-0">Tren Harian</h5>
 

@@ -74,7 +74,7 @@ watch(
 <template>
   <div class="row ms-1 mb-3 mt-2">
     <div class="col-12 col-md-4 ">
-      <div class="card shadow-sm p-3 text-center h-100">
+      <div class="card p-3 text-center h-100">
         <div class="fw-bold fs-4 text-success">
           {{ positive.toLocaleString() }}
         </div>
@@ -82,7 +82,7 @@ watch(
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="card shadow-sm p-3 text-center h-100">
+      <div class="card p-3 text-center h-100">
         <div class="fw-bold fs-4 text-secondary">
           {{ neutral.toLocaleString() }}
         </div>
@@ -90,7 +90,7 @@ watch(
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="card shadow-sm p-3 text-center h-100">
+      <div class="card p-3 text-center h-100">
         <div class="fw-bold fs-4 text-danger">
           {{ negative.toLocaleString() }}
         </div>

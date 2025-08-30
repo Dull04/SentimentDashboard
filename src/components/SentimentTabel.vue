@@ -68,7 +68,7 @@ const setSort = (key) => {
 </script>
 
 <template>
-  <div class="card p-0 shadow-sm ms-3">
+  <div class="card p-0 ms-3">
     <div class="card-body p-3">
       <div class="mb-2 ms-3 subTitle">
         Sentiment Tabel

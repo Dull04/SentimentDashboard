@@ -93,7 +93,7 @@ const placeholderOptions = {
 </script>
 
 <template>
-  <div class="card shadow-sm p-3 d-flex align-items-center justify-content-center mt-3" style="flex: 1">
+  <div class="card p-3 d-flex align-items-center justify-content-center mt-3" style="flex: 1">
     <div style="width:100%; display:flex; flex-direction:column; align-items:center;">
       <div style="height:100%; width:100%;">
         <Doughnut v-if="chartData" :data="chartData.chart" :options="chartOptions" />
