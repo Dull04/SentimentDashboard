@@ -1,5 +1,3 @@
-
-
 <script setup>
 import { onMounted, watch } from "vue";
 import { Chart } from "chart.js/auto";
