@@ -1,7 +1,7 @@
 ## How To Run
-clone this Repo
-npm install
-npm run dev (Mininum Node Js version 20.19+ or 22.12+)
+- clone this Repo
+- npm install
+- npm run dev (Mininum Node Js version 20.19+ or 22.12+)
 
 ## Features
 
