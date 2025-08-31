@@ -56,8 +56,8 @@ const chartOptions = computed(() => ({
       display: true,
       text:
         props.selectedChannel === "all"
-          ? "Distribusi Sentiment Semua Channel"
-          : `Distribusi Sentiment ${
+          ? "Sentiment Distribution Across All Channels"
+          : `Sentiment Distribution for ${
               props.selectedChannel.charAt(0).toUpperCase() +
               props.selectedChannel.slice(1)
             }`,

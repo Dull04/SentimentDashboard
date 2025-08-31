@@ -120,7 +120,7 @@ watch(() => props.selectedChannel, renderChart);
         v-if="selectedChannel === 'all'"
         class="position-absolute top-0 end-0 me-2 mt-2 text-muted small fst-italic"
       >
-        Hover untuk lihat detail nya
+        Hover to view details
       </div>
 
       <div class="d-flex align-items-center justify-content-center h-100">

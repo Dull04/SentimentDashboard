@@ -30,7 +30,7 @@ handleChange();
           <option v-for="channel in channels" :key="channel" :value="channel">
             {{
               channel === "all"
-                ? "Semua Channel"
+                ? "All Channels"
                 : channel.charAt(0).toUpperCase() + channel.slice(1)
             }}
           </option>
