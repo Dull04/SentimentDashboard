@@ -50,6 +50,6 @@
 - [Vue3 ApexCharts](https://apexcharts.com/docs/vue-charts/) → Vue 3 wrapper for ApexCharts.
 
 ### 📝 Assumptions
-- The project is running with **Node.js v18+**.
+- The project is running with **Node.js v20.19+**.
 - Sentiment data is loaded locally from a JSON file (`package.json` file), not fetched from an external API.
 - A modern browser (latest Chrome/Edge/Firefox) is required for full compatibility.
