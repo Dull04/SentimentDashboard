@@ -35,3 +35,21 @@
 ### 6. Channel Comparison Chart (Bar Chart)
 - Compares sentiment across different platforms (News, Instagram, YouTube, Facebook, TikTok, Twitter).
 - Highlights which channels are more positive or negative.
+
+## 📌 Additional Notes
+
+### 📦 Libraries Used
+- [Vue 3](https://vuejs.org/) → Main frontend framework.
+- [Vite](https://vitejs.dev/) → Build tool & development server.
+- [Bootstrap 5](https://getbootstrap.com/) → CSS framework for styling and layout.
+- [Bootstrap Icons](https://icons.getbootstrap.com/) → Official Bootstrap icon set.
+- [Chart.js](https://www.chartjs.org/) → Canvas-based charting library.
+- [Chart.js Datalabels](https://chartjs-plugin-datalabels.netlify.app/) → Plugin to add labels on Chart.js charts.
+- [Vue Chart.js](https://vue-chartjs.org/) → Official Vue wrapper for Chart.js.
+- [ApexCharts](https://apexcharts.com/) → JavaScript charting library.
+- [Vue3 ApexCharts](https://apexcharts.com/docs/vue-charts/) → Vue 3 wrapper for ApexCharts.
+
+### 📝 Assumptions
+- The project is running with **Node.js v18+**.
+- Sentiment data is loaded locally from a JSON file (`package.json` file), not fetched from an external API.
+- A modern browser (latest Chrome/Edge/Firefox) is required for full compatibility.
